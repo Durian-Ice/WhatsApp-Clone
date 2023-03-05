@@ -1,4 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
+:root
+{
+    --showdow-color: 11, 20, 26;
+}
 *
 {
     margin: 0;
@@ -6,22 +10,19 @@
     box-sizing: border-box;
     font-family: 'Open Sans', sans-serif;
 }
-body
+html, body
 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #f2eadf;
+    height: 100%;
+    overflow: hidden;
 }
 .container
 {
     position: relative;
-    width: 340px;
-    height: 600px;
+    /* width: 340px; */
+    width: 100%;
+    height: 100%;
     background: #fff;
-    box-shadow: 0 5px 5px rgba(0,0,0,0.15);
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 header
 {
@@ -31,12 +32,13 @@ header
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-shadow: 0 5px 5px rgba(var(--showdow-color),0.13);
 }
 header .logo
 {
     color: #fff;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 1.1em;
 }
 header .action
@@ -51,12 +53,6 @@ header .action a
     display: flex;
     font-size: 1.5em;
     text-decoration: none;
-
-}
-.tabs input
-{
-    visibility: hidden;
-    display: none;
 }
 .buttons
 {
@@ -67,7 +63,7 @@ header .action a
 }
 .buttons label
 {
-    width: 33.33%;
+    width: 50%;
     color: #fff;
     opacity: 0.75;
     text-align: center;
@@ -77,38 +73,12 @@ header .action a
     font-size: 0.9em;
     cursor: pointer;
 }
-.tabs input:nth-child(1):checked ~.buttons label:nth-child(1),
-.tabs input:nth-child(2):checked ~.buttons label:nth-child(2),
-.tabs input:nth-child(3):checked ~.buttons label:nth-child(3)
-{
-    opacity: 1;
-}
-.underline
-{
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 33.333%;
-    height: 3px;
-    background: #fff;
-    transition: 0.2s;
-}
-.tabs input:nth-child(1):checked ~.buttons .underline
-{
-    left: 0;
-}
-.tabs input:nth-child(2):checked ~.buttons .underline
-{
-    left: 33.333%;
-}
-.tabs input:nth-child(3):checked ~.buttons .underline
-{
-    left: 66.666%;
-}
 .content
 {
     position: relative;
-    width: calc(340px * 3);
+    /* width: calc(340px); */
+    width: 100%;
+    height: 100%;
     display: flex;
     transition: 0.5s;
     overflow: hidden;
@@ -116,25 +86,13 @@ header .action a
 .content .box
 {
     position: relative;
-    width: 340px;
-}
-.tabs input:nth-child(1):checked ~ .content
-{
-    left: calc(340px * 0);
-}
-.tabs input:nth-child(2):checked ~ .content
-{
-    left: calc(340px * -1);
-}
-.tabs input:nth-child(3):checked ~ .content
-{
-    left: calc(340px * -2);
+    width: 100%;
 }
 .content .data
 {
     position: relative;
     width: 100%;
-    height: 510px;
+    height: 100%;
 }
 .chatlist
 {
@@ -201,7 +159,6 @@ header .action a
     display: flex;
     justify-content: space-between;
     align-items: center;
-
 }
 .chatlist .block .details p
 {
@@ -233,4 +190,169 @@ header .action a
     justify-content: center;
     align-items: center;
     font-size: 0.75em;
+}
+.chatBox
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #efe6dd;
+}
+.chatBox.hide
+{
+    display: none;
+}
+.chatBox::before
+{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(pattern.jpg);
+    opacity: 0.05;
+}
+.chat_header
+{
+    position: relative;
+    width: 100%;
+    height: 7.5%;
+    padding: 10px;
+    background: #008069;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.chat_header .imgcontent
+{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.chat_header .imgcontent ion-icon
+{
+    color: #fff;
+    cursor: pointer;
+    font-size: 1.25em;
+}
+ion-icon
+{
+    cursor: pointer;
+}
+.chat_header .imgcontent .imgBx
+{
+    position: relative;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.chat_header .imgcontent .imgBx img
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.chat_header .imgcontent h3
+{
+    color: #fff;
+    font-size: 1em;
+    font-weight: 500;
+    line-height: 1.1em;
+}
+.chat_header .imgcontent h3 span
+{
+    font-size: 0.7em;
+    font-weight: 400;
+}
+/* .chat_header .actionBtns
+{
+    position: relative;
+    display: flex;
+    color: #fff;
+    gap: 15px;
+} */
+.messageBox
+{
+    position: relative;
+    padding: 20px;
+    height: 46.25%;
+    overflow-y: auto;
+}
+.messageBox .msg-container
+{
+    margin-bottom: 2px;
+}
+.messageBox .msg-container .message
+{
+    position: relative;
+    padding: 10px;
+    background: #fff;
+    border-radius: 7.5px;
+    box-shadow: 0 1px 0.5px rgba(var(--showdow-color),0.13);
+}
+.messageBox .msg-container.start .message
+{
+    border-top-left-radius: 0;
+}
+.messageBox .msg-container.start .message::before
+{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -10px;
+    border: 10px solid transparent;
+    border-top: 10px solid #fff;
+}
+.messageBox .msg-container.end
+{
+    margin-bottom: 12px;
+}
+.time
+{
+    position: relative;
+    display: block;
+    font-size: 0.7em;
+    width: 100%;
+    text-align: end;
+    color: #777
+}
+.messageInput
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    height: 46.25%;
+    width: 100%;
+    background: #fff;
+    box-shadow: 0px 0px 5px 1px rgba(var(--showdow-color),0.13);
+}
+.messageInput .icon-container
+{
+  display: flex;
+  justify-content: center;
+  width: calc(100%/3);
+}
+.messageInput .icon-container ion-icon
+{
+    font-size: 7em;
+}
+.chatBox .back
+{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+}
+.chatBox .back ion-icon
+{
+  font-size: 4em;
 }
