@@ -93,7 +93,7 @@
           <div class="icon-container">
             <ion-icon name="videocam"></ion-icon>
           </div>    
-          <div class="icon-container">
+          <div class="icon-container long-press">
             <ion-icon name="mic"></ion-icon>
           </div>    
         </div>
@@ -105,9 +105,9 @@
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script>
-        let back = document.querySelector('.back');
-        let chatBox = document.querySelector('.chatBox');
-        let open = document.querySelector('.open')
+        const back = document.querySelector('.back');
+        const chatBox = document.querySelector('.chatBox');
+        const open = document.querySelector('.open')
 
         back.onclick = function() {
             chatBox.classList.add('hide');
@@ -115,6 +115,9 @@
         open.onclick = function() {
             chatBox.classList.remove('hide');
         }
+    </script>
+    <script>
+      
     </script>
   </body>
 </html>
